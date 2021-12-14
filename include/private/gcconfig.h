@@ -140,7 +140,7 @@ EXTERN_C_BEGIN
 /* And one for FreeBSD: */
 # if (defined(__FreeBSD__) || defined(__DragonFly__) \
       || defined(__FreeBSD_kernel__)) && !defined(FREEBSD) \
-     && !defined(GC_NO_FREEBSD) 
+     && !defined(GC_NO_FREEBSD)
 #   define FREEBSD
 # endif
 
@@ -2268,7 +2268,7 @@ EXTERN_C_BEGIN
 #     define OS_TYPE "LINUX"
 #     define LINUX_STACKBOTTOM
 #     define DYNAMIC_LOADING
-      extern int __data_start[];
+      extern int __data_start[] __attribute__((__weak__));
       extern int _end[];
 #     define DATASTART ((ptr_t)__data_start)
 #     define DATAEND ((ptr_t)(&_end))
@@ -3613,7 +3613,7 @@ EXTERN_C_BEGIN
 EXTERN_C_END
 
 #ifndef SMALL_CONFIG
-/* We were running out of memory due to the fact that 
+/* We were running out of memory due to the fact that
  * GC has a static sized array for heap segments, and without
  * LARGE_CONFIG you go OOM at around 1.8 GB on 64-bit.
  * Note, we define it everywhere on Mono. */
