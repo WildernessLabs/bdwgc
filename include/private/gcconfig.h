@@ -107,10 +107,10 @@ EXTERN_C_BEGIN
 /* And one for QNX: */
 # if defined(__QNX__)
 #    define QNX_STACKBOTTOM 1
-#    if defined(__arm__) || defined(__ARM__)
-#        define ARM32
-#    elif defined(__aarch64__)
+#    if defined(__aarch64__)
 #        define AARCH64
+#    elif defined(__arm__) || defined(__ARM__)
+#        define ARM32
 #    elif defined(__amd64) || defined(__X86_64__)
 #        define X86_64
 #    elif defined(__X86__)

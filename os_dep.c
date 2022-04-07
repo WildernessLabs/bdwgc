@@ -2809,6 +2809,18 @@ void GC_reset_default_push_other_roots(void)
 #endif
 }
 
+GC_push_other_roots_proc GC_on_mark_stack_empty;
+
+GC_API void GC_CALL GC_set_mark_stack_empty (GC_mark_stack_empty_proc fn)
+{
+	GC_on_mark_stack_empty = fn;
+}
+
+GC_API GC_mark_stack_empty_proc GC_CALL GC_get_mark_stack_empty (void)
+{
+	return GC_on_mark_stack_empty;
+}
+
 /*
  * Routines for accessing dirty bits on virtual pages.
  * There are six ways to maintain this information:
